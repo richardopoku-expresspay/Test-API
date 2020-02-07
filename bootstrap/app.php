@@ -87,6 +87,7 @@ $app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
 
 \Dusterio\LumenPassport\LumenPassport::routes($app, ['prefix' => 'v1/oauth']);
 $app->register(App\Providers\FormRequestServiceProvider::class);
+$app->register(App\Providers\RepositoryServiceProvider::class);
 
 
 /*

@@ -190,7 +190,7 @@ if (!function_exists('putHttpRequest')) {
      * @param boolean $verify_ssl
      * @return array
      */
-    function postHttpRequest($url, $body=[], $headers=[], $body_type='json', $verify_ssl=false) {
+    function putHttpRequest($url, $body=[], $headers=[], $body_type='json', $verify_ssl=false) {
         return sendHttpRequest($url, 'put', $body, $body_type, $headers, $verify_ssl);
     }
 }
@@ -204,7 +204,7 @@ if (!function_exists('patchHttpRequest')) {
      * @param boolean $verify_ssl
      * @return array
      */
-    function postHttpRequest($url, $body=[], $headers=[], $body_type='json', $verify_ssl=false) {
+    function patchHttpRequest($url, $body=[], $headers=[], $body_type='json', $verify_ssl=false) {
         return sendHttpRequest($url, 'patch', $body, $body_type, $headers, $verify_ssl);
     }
 }
@@ -218,7 +218,7 @@ if (!function_exists('deleteHttpRequest')) {
      * @param boolean $verify_ssl
      * @return array
      */
-    function postHttpRequest($url, $body=[], $headers=[], $body_type='json', $verify_ssl=false) {
+    function deleteHttpRequest($url, $body=[], $headers=[], $body_type='json', $verify_ssl=false) {
         return sendHttpRequest($url, 'delete', $body, $body_type, $headers, $verify_ssl);
     }
 }

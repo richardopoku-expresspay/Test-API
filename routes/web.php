@@ -18,7 +18,15 @@ $router->get('/', function () use ($router) {
 $router->group(['prefix' => 'v1'], function() use($router) {
     $router->post('callback', ['as' => 'callback', 'uses' => 'CallBackController']);
     $router->group(['middleware' => 'auth'], function () use ($router) {
-        
+        //Merchant Checkout Group
+        $router->group(['prefix' => 'checkout'], function() use ($router) {
+            $router->post('token', ['as' => 'checkout.token', 'uses' => 'GenerateMerchantCheckoutTokenController']);
+        });
+
+        //Direct Checkout Group
+        $router->group(['prefix' => 'direct'], function () use ($router) {
+
+        });
     });
 
     $router->post('register', ['as' => 'register', 'uses' => 'RegisterController']);

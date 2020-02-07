@@ -17,7 +17,6 @@ class RegisterController extends Controller
      */
     public function __invoke(RegisterFormRequest $request)
     {
-        //Log::debug('Request to register',['payload' => $request->all()]);
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
         $user = User::create($input);
@@ -26,7 +25,6 @@ class RegisterController extends Controller
         $data['name'] =  $user->name;
         $data['token'] =  $user->createToken('App')->accessToken;
 
-        //return response()->json(['data' => $data, 'message' => 'Account created successfully!', 'status' => 'Success', 'error_code' => 201], 201);
         return response()->json(successResponse('User account created.', 201, $data), 201);
     } 
 }

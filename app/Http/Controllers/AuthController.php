@@ -21,7 +21,6 @@ class AuthController extends Controller
         $user = User::where('email', $request->input('email'))->first();
 
         if(!$user instanceof User || !Hash::check($request->input('password'), $user->password)){
-            //return response()->json(['data' => [], 'message' => 'Invalid credentials.', 'status' => 'Fail', 'error_code' => 401], 401);
             return response()->json(errorResponse('Invalid credentials.', 401), 401);
         }
 
@@ -30,7 +29,6 @@ class AuthController extends Controller
         $data['name'] =  $user->name;
         $data['token'] =  $user->createToken('App')->accessToken;
 
-        //return response()->json(['data' => $data, 'message' => 'Authentication successful', 'status' => 'Success', 'error_code' => 200], 200);
         return response()->json(successResponse('Authenticated.', 200, $data), 200);
     }
 }

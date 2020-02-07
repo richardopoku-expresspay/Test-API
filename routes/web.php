@@ -14,3 +14,13 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->group(['prefix' => 'v1'], function() use($router) {
+    $router->post('callback', ['as' => 'callback', 'uses' => 'CallBackController']);
+    $router->group(['middleware' => 'auth'], function () use ($router) {
+        
+    });
+
+    $router->post('register', ['as' => 'register', 'uses' => 'RegisterController']);
+    $router->post('login', ['as' => 'authenticate', 'uses' => 'AuthController']);
+});

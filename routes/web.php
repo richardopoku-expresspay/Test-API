@@ -22,5 +22,5 @@ $router->group(['prefix' => 'v1'], function() use($router) {
     });
 
     $router->post('register', ['as' => 'register', 'uses' => 'RegisterController']);
-    $router->post('login', ['as' => 'authenticate', 'uses' => 'AuthController']);
+    $router->post('authenticate', ['as' => 'authenticate', 'uses' => 'AuthController']);
 });

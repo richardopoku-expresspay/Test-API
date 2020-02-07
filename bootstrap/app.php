@@ -57,6 +57,8 @@ $app->singleton(
 |
 */
 
+$app->configure('auth');
+
 // $app->middleware([
 //     App\Http\Middleware\ExampleMiddleware::class
 // ]);
@@ -82,6 +84,10 @@ $app->register(App\Providers\EventServiceProvider::class);
 $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 $app->register(Laravel\Passport\PassportServiceProvider::class);
 $app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
+
+\Dusterio\LumenPassport\LumenPassport::routes($app, ['prefix' => 'v1/oauth']);
+$app->register(App\Providers\FormRequestServiceProvider::class);
+
 
 /*
 |--------------------------------------------------------------------------

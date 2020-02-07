@@ -30,7 +30,8 @@ abstract class FormRequest extends HttpRequest implements ValidatesWhenResolved
         $validator = app('validator')->make($this->all(), $this->rules(), $this->messages());
 
         if ($validator->fails()) {
-            $result = [ 'message' => 'The given data was invalid.', 'errors' => $validator->errors()->toArray()];
+            //$result = [ 'status' => 'Fail', 'error_code' => 422, 'message' => 'The given data was invalid.', 'data' => [ 'errors' => $validator->errors()->toArray()]];
+            $result = errorResponse('The given data was invalid.', 422, ['errors' => $validator->errors()->toArray()]);
             throw new HttpResponseException($this->response($result));
         }
     }

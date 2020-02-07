@@ -17,13 +17,16 @@ class RegisterController extends Controller
      */
     public function __invoke(RegisterFormRequest $request)
     {
+        //Log::debug('Request to register',['payload' => $request->all()]);
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
         $user = User::create($input);
       
-        $data['token'] =  $user->createToken('MyApp')->accessToken;
+        $data['email'] = $user->email;
         $data['name'] =  $user->name;
+        $data['token'] =  $user->createToken('App')->accessToken;
 
-        return response(['data' => $data, 'message' => 'Account created successfully!', 'status' => 201], 201);
+        //return response()->json(['data' => $data, 'message' => 'Account created successfully!', 'status' => 'Success', 'error_code' => 201], 201);
+        return response()->json(successResponse('User account created.', 201, $data), 201);
     } 
 }

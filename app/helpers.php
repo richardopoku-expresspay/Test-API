@@ -244,6 +244,6 @@ if (!function_exists('floatToMinor')) {
         $val = ((string) $amount * 100);
         //pad it with zeros
         $iter = 12 - strlen($val);
-        return str_repeat('0', $iter) . $val;; 
+        return str_repeat('0', $iter) . $val;//This is according to the amount in ISO 8583 standards
     }
 }

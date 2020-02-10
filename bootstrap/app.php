@@ -59,6 +59,7 @@ $app->singleton(
 
 $app->configure('auth');
 $app->configure('expresspay');
+$app->configure('currency');
 
 // $app->middleware([
 //     App\Http\Middleware\ExampleMiddleware::class

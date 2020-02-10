@@ -58,6 +58,7 @@ $app->singleton(
 */
 
 $app->configure('auth');
+$app->configure('expresspay');
 
 // $app->middleware([
 //     App\Http\Middleware\ExampleMiddleware::class

@@ -222,3 +222,28 @@ if (!function_exists('deleteHttpRequest')) {
         return sendHttpRequest($url, 'delete', $body, $body_type, $headers, $verify_ssl);
     }
 }
+
+if (!function_exists('minorToFloat')) {
+    /**
+     * @param string|int $amount
+     * @return float
+     */
+    function minorToFloat($amount) : float {
+        return ((float) $amount / 100.0 );
+    }
+}
+
+if (!function_exists('floatToMinor')) {
+    /**
+     * @param float|int $amount
+     * @return string
+     */
+    function floatToMinor($amount) : string {
+        //multiply it by 100 first
+        //based on the length, append
+        $val = ((string) $amount * 100);
+        //pad it with zeros
+        $iter = 12 - strlen($val);
+        return str_repeat('0', $iter) . $val;; 
+    }
+}
